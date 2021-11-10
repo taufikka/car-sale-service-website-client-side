@@ -1,0 +1,31 @@
+@media only screen and (min-width:1200px) {
+    .custom-width{
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .custom-width{
+        width: 50%;
+    }
+}
+@media only screen and (min-width:900px) and (max-width:1199px) {
+    .custom-width{
+        width: 70%;
+    }
+}
+@media only screen and (min-width:700px) and (max-width:899px) {
+    .custom-width{
+        width: 80%;
+    }
+}
+@media only screen and (min-width:500px) and (max-width:699px) {
+    .custom-width{
+        width: 90%;
+    }
+}
+@media only screen and (min-width:300px) and (max-width:499px) {
+    .custom-width{
+        width: 96%;
+    }
+} 
