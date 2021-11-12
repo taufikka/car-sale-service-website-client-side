@@ -10,6 +10,8 @@ import Register from './Pages/Login/Register/Register';
 import Login from './Pages/Login/Login/Login';
 import AuthProvider from './contexts/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import NotFound from './Pages/Dashboard/NotFound/NotFound';
 
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
     <div>
       <AuthProvider>
         <BrowserRouter>
-          <Header></Header>
+
           <Switch>
 
             <Route exact path='/'>
@@ -44,8 +46,16 @@ function App() {
               <Login></Login>
             </Route>
 
+            <PrivateRoute path='/dashboard'>
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+
+            <Route path='*'>
+              <NotFound />
+            </Route>
+
           </Switch>
-          <Footer></Footer>
+
         </BrowserRouter>
       </AuthProvider>
     </div>

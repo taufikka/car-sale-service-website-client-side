@@ -2,11 +2,14 @@ import initializeAuth from "../Pages/Login/Firebase/firebase.init"
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { useState } from "react";
+import axios from "axios";
 
 initializeAuth()
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
+
     const auth = getAuth();
 
     const registerUser = (email, password, name) => {
@@ -17,6 +20,9 @@ const useFirebase = () => {
 
                 const newUser = { email, displayName: name }
                 setUser(newUser);
+
+                // save user to the database
+                saveUser(email, name)
 
                 // send name to firebase after creation
                 updateProfile(auth.currentUser, {
@@ -69,12 +75,25 @@ const useFirebase = () => {
             // An error happened.
         })
             .finally(() => setIsLoading(false))
-
-
     }
+
+    // save user to database
+    const saveUser = (email, displayName) => {
+        const user = { email, displayName }
+        axios.post('https://peaceful-ocean-15686.herokuapp.com/users', user)
+            .then()
+    }
+
+    // admin check
+    useEffect(() => {
+        fetch(`https://peaceful-ocean-15686.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     return {
         user,
+        admin,
         registerUser,
         loginUser,
         logout,

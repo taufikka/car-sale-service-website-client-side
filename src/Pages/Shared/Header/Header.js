@@ -9,6 +9,7 @@ const Header = () => {
         fontWeight: "bold",
         color: "blue"
     }
+    console.log(user.displayName)
     return (
         <>
             <Navbar bg="light" variant="light" sticky="top" collapseOnSelect expand="lg">
@@ -16,14 +17,20 @@ const Header = () => {
                     <Navbar.Brand className='fw-bolder'>CarWorld</Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
-                        <NavLink activeStyle={activeStyle} className='nav' to="/home">Home</NavLink>
-                        <NavLink activeStyle={activeStyle} className='nav' to="/explore">Explore</NavLink>
-
+                        <NavLink activeStyle={activeStyle} className='mx-2 text-decoration-none' to="/home">Home</NavLink>
+                        <NavLink activeStyle={activeStyle} className='mx-2 text-decoration-none' to="/explore">Explore</NavLink>
                         {
-                            user.email ? <NavLink to="/"><button onClick={logout} className="btn btn-danger">Log out</button></NavLink>
+                            user?.email ? <div>
+                                <NavLink activeStyle={activeStyle} className='mx-2 text-decoration-none' to="/dashboard">Dashboard</NavLink>
+
+                                <NavLink to="/"><button onClick={logout} className="btn btn-danger mx-2">Log out</button></NavLink>
+                            </div>
                                 :
-                                <NavLink activeStyle={activeStyle} className='nav' to="/login">Login</NavLink>
+                                <NavLink activeStyle={activeStyle} className='mx-2 text-decoration-none' to="/login">Login</NavLink>
                         }
+                        <Navbar.Text>
+                            logged in as: <small className='fw-bold text-dark'>{user?.displayName}</small>
+                        </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

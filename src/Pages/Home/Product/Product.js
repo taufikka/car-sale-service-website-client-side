@@ -8,7 +8,7 @@ const Product = (props) => {
     const url = `/product/${_id}`;
     return (
         <div>
-            <Col className='card box-shadow'>
+            <Col className='box-shadow'>
                 {/* single service card */}
                 <Card>
                     <Card.Img className='img-fluid' variant="top h-100" src={img} />

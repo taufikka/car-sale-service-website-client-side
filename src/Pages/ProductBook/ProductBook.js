@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import Footer from '../Shared/Footer/Footer';
+import Header from '../Shared/Header/Header';
 import './ProductBook.css'
 
 const ProductBook = () => {
@@ -14,7 +16,7 @@ const ProductBook = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://peaceful-ocean-15686.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -23,7 +25,7 @@ const ProductBook = () => {
 
     /* take input and send to server */
     const onSubmit = data => {
-        axios.post('http://localhost:5000/orders', data)
+        axios.post('https://peaceful-ocean-15686.herokuapp.com/orders', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert("Added successfully")
@@ -34,7 +36,7 @@ const ProductBook = () => {
 
     return (
         <div>
-
+            <Header></Header>
             <div className='row row-cols-1 row-cols-md-2 row-cols-lg-2 g-2'>
                 <div className='col'>
                     <h2 className='text-center my-3 fw-bolder'>Your Car Order here</h2>
@@ -100,7 +102,7 @@ const ProductBook = () => {
                     </div>
                 </div>
             </div>
-
+            <Footer></Footer>
         </div>
     );
 };

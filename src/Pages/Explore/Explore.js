@@ -3,23 +3,26 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Footer from '../Shared/Footer/Footer';
+import Header from '../Shared/Header/Header';
 
 const Explore = () => {
 
     const [moreProducts, setMoreProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://peaceful-ocean-15686.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setMoreProducts(data))
     }, [])
-    //`/product/${_id}`
+
 
     return (
         <div>
+            <Header></Header>
             <Container className='my-3'>
                 <div className='my-4 text-center'>
-                    <h1 className='fw-bold'>More SUV Collections</h1>
+                    <h2 className='fw-bold'>More SUV Collections</h2>
                 </div>
                 <Row xs={1} md={2} lg={3} className='g-4 my-4'>
                     {
@@ -47,6 +50,7 @@ const Explore = () => {
                     }
                 </Row>
             </Container>
+            <Footer></Footer>
         </div>
     );
 };
