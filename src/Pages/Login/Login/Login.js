@@ -17,7 +17,7 @@ const Login = () => {
         loginUser(data.email, data.password, history, location);
         reset()
     };
-
+    // user login page
     return (
         <div>
             <Header></Header>
@@ -38,7 +38,7 @@ const Login = () => {
                         required
                     /> <br />
 
-                    <input className="btn btn-danger p-2 m-2 w-25" type="submit" /> <br />
+                    <input className="btn btn-danger p-2 m-2 w-25" type="submit" value="Login" /> <br />
 
                     <NavLink
                         style={{ textDecoration: "none" }}

@@ -3,6 +3,7 @@ import image from '../../../images/welcome.jpg'
 
 const DashboardHome = () => {
     return (
+        // welcome page
         <div className='d-flex justify-content-center align-items-center main'>
             <img style={{}} className="w-50" src={image} alt="" />
         </div>

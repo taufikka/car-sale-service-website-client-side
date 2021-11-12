@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useForm } from "react-hook-form";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
@@ -9,12 +9,13 @@ import './Register.css'
 
 const Register = () => {
     const { registerUser } = useAuth()
+    const history = useHistory()
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        registerUser(data.email, data.password, data.name)
+        registerUser(data.email, data.password, data.name, history)
         reset()
     };
-
+    // user register page
     return (
         <div>
             <Header></Header>
@@ -41,7 +42,7 @@ const Register = () => {
                         required
                     /> <br />
 
-                    <input className="btn btn-danger p-2 m-1 w-25" type="submit" /> <br />
+                    <input className="btn btn-danger p-2 m-1 w-25" type="submit" value="Register" /> <br />
 
                     <NavLink
                         style={{ textDecoration: "none" }}

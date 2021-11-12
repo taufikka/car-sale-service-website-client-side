@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import notFound from '../../../images/notfound.png'
 
 const NotFound = () => {
+    // show not found page for wrong url
     return (
         <div className='text-center'>
             <img className='w-50' src={notFound} alt="" />

@@ -9,7 +9,7 @@ const Reviews = () => {
 
     const { register, handleSubmit, reset } = useForm();
 
-    /* take input and send to server */
+    /* post req send to server */
     const onSubmit = data => {
         axios.post('https://peaceful-ocean-15686.herokuapp.com/reviews', data)
             .then(res => {
@@ -20,9 +20,10 @@ const Reviews = () => {
             })
     };
 
+    // add review about site by user
     return (
         <div className='main'>
-            <div className='my-5 login-container'>
+            <div className='my-5'>
                 <h3 className='text-center fw-bolder'>Add Review Here</h3>
                 <div className='text-center mx-auto p-2 border custom-width'>
 
@@ -37,6 +38,11 @@ const Reviews = () => {
                         <input  {...register("email")}
                             value={user?.email}
                             placeholder="Your Name"
+                            className='p-2 m-1' required />
+                        <br />
+
+                        <input  {...register("point")}
+                            placeholder="Your rating out of 5"
                             className='p-2 m-1' required />
                         <br />
 

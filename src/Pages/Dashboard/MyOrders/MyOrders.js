@@ -17,7 +17,7 @@ const MyOrders = () => {
             .then(data => setOrders(data))
     }, [deleted])
 
-    // delete service by user
+    // delete order by user
     const handleDeleteOrder = (id) => {
         const proceed = window.confirm('Are you confirm to cancel booking?');
         if (proceed) {
@@ -36,14 +36,13 @@ const MyOrders = () => {
         }
     }
 
-
-
+    // specific user order show
     return (
         <div className='main'>
             <div className='container my-4'>
                 <div className='row row-cols-1 row-cols-md-3 row-cols-lg-3 g-2'>
                     {
-                        orders.map(order => order.email === user.email &&
+                        orders?.map(order => order.email === user.email &&
                             <div key={order._id} className='col'>
                                 <div className="card" style={{ width: "18rem" }}>
                                     <div className="card-body">
@@ -51,7 +50,7 @@ const MyOrders = () => {
                                         <h6 className="card-title"><strong>Email:</strong> {order.email}</h6>
                                         <h6 className="card-title">Car: {order.product}</h6>
                                         <h6 className="card-text"> Contact: {order.phone}</h6>
-                                        <h6 className="card-text"> Booked date: {order.date}</h6>
+                                        <h6 className="card-text"> Order: <strong>{order.status}</strong></h6>
                                         <button onClick={() => handleDeleteOrder(order._id)} className='btn btn-danger'>Cancel</button>
                                     </div>
                                 </div>

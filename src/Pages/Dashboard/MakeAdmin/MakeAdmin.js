@@ -4,8 +4,9 @@ import { useForm } from "react-hook-form";
 const MakeAdmin = () => {
     const { register, handleSubmit } = useForm();
 
+    // admin create using put operation
     const onSubmit = data => {
-        console.log(data)
+        //console.log(data)
         fetch('https://peaceful-ocean-15686.herokuapp.com/admin', {
             method: 'PUT',
             headers: {

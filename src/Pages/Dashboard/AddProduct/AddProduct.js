@@ -16,11 +16,11 @@ const AddProduct = () => {
                 }
             })
     };
-
+    // add new product by admin
     return (
         <div className='main'>
             <div className='login-container my-5'>
-                <h2 className='text-center fw-bolder'>Add New Service</h2>
+                <h2 className='text-center fw-bolder'>Add New Product</h2>
                 <div className='text-center mx-auto p-4 border custom-width'>
 
                     <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const PopularBrand = () => {
+    // popular brand section
     return (
         <div className='container py-2 mb-3'>
             <h2 className='fw-bold text-center py-3'>Popular car brands</h2>
@@ -49,7 +50,7 @@ const PopularBrand = () => {
                     <div className="card d-flex justify-content-center align-items-center pt-4">
                         <img style={{ width: '100px' }} src="https://media.carsnip.com/media/brand/mercedes_benz.svg" className="card-img-top" alt="..." />
                         <div className="card-body">
-                            <h5 className="card-title">Mercedes-Benz(150)</h5>
+                            <h5 className="card-title text-center">Mercedes-Benz(150)</h5>
                         </div>
                     </div>
                 </div>

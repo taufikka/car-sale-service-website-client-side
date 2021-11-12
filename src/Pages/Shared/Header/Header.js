@@ -9,7 +9,7 @@ const Header = () => {
         fontWeight: "bold",
         color: "blue"
     }
-    console.log(user.displayName)
+    // header navbar with user login name
     return (
         <>
             <Navbar bg="light" variant="light" sticky="top" collapseOnSelect expand="lg">

@@ -23,9 +23,9 @@ const ProductBook = () => {
 
     const { register, handleSubmit, reset } = useForm();
 
-    /* take input and send to server */
+    /* post req send to server */
     const onSubmit = data => {
-        axios.post('https://peaceful-ocean-15686.herokuapp.com/orders', data)
+        axios.post('https://peaceful-ocean-15686.herokuapp.com/orders', data, data.status = 'pending')
             .then(res => {
                 if (res.data.insertedId) {
                     alert("Added successfully")
@@ -33,7 +33,7 @@ const ProductBook = () => {
                 }
             })
     };
-
+    // product book form and details show about product
     return (
         <div>
             <Header></Header>

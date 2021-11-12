@@ -2,31 +2,47 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Footer from '../Shared/Footer/Footer';
-import Header from '../Shared/Header/Header';
 
-const Explore = () => {
+const ManageProducts = () => {
 
     const [moreProducts, setMoreProducts] = useState([]);
+    const [deleted, setDeleted] = useState(null);
 
     useEffect(() => {
         fetch('https://peaceful-ocean-15686.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setMoreProducts(data))
-    }, [])
+    }, [deleted])
 
-    // all of the products show here
+    // delete item by admin from products collection
+    const handleDeleteOrder = (id) => {
+        const proceed = window.confirm('Are you confirm to delete this item?');
+        if (proceed) {
+            const url = `https://peaceful-ocean-15686.herokuapp.com/products/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deleteCount) {
+                        setDeleted(true)
+                    } else {
+                        setDeleted(false)
+                    }
+                })
+        }
+    }
+
     return (
-        <div>
-            <Header></Header>
+        <div className='main'>
+
             <Container className='my-3'>
                 <div className='my-4 text-center'>
-                    <h2 className='fw-bold'>More SUV Collections</h2>
+
                 </div>
                 <Row xs={1} md={2} lg={3} className='g-4 my-4'>
                     {
-                        moreProducts.map(product => <Col key={product._id} >
+                        moreProducts.map(product => <Col key={product._id}>
                             <Card>
                                 <Card.Img className='img-fluid' variant="top h-100" src={product.img} />
                                 <Card.Body>
@@ -36,11 +52,7 @@ const Explore = () => {
                                     </Card.Text>
 
                                     <div className="d-flex justify-content-between">
-
-                                        <Link to={`/product/${product._id}`}>
-                                            <Button className="my-2" variant="outline-danger">Buy Now</Button>
-                                        </Link>
-
+                                        <Button onClick={() => handleDeleteOrder(product._id)} className="my-2" variant="danger">Delete Item</Button>
                                         <h4 className='p-2 fw-bold'><i className="fas fa-dollar-sign"></i>{product.price}</h4>
                                     </div>
 
@@ -50,9 +62,9 @@ const Explore = () => {
                     }
                 </Row>
             </Container>
-            <Footer></Footer>
+
         </div>
     );
 };
 
-export default Explore;
+export default ManageProducts;

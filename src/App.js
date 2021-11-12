@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './Pages/Home/Home/Home';
 import Explore from './Pages/Explore/Explore';
-import Header from './Pages/Shared/Header/Header';
-import Footer from './Pages/Shared/Footer/Footer';
 import ProductBook from './Pages/ProductBook/ProductBook';
 import Register from './Pages/Login/Register/Register';
 import Login from './Pages/Login/Login/Login';
@@ -16,6 +14,7 @@ import NotFound from './Pages/Dashboard/NotFound/NotFound';
 
 function App() {
   return (
+    // All routes
     <div>
       <AuthProvider>
         <BrowserRouter>
